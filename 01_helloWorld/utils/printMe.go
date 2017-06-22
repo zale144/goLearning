@@ -1,9 +1,9 @@
-package main
+package utils
 
 import "fmt"
 
 var ti = "ti"
 
-func printYaya() {
-	fmt.Println(b)
+func PrintYaya() {
+	fmt.Println(Ime)
 }

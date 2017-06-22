@@ -2,23 +2,21 @@ package main
 
 import (
 	"fmt"
-	"Tutorial/01_helloWorld/utils"
+	//"Tutorial/01_helloWorld/utils"
 )
 
 
-var b string
+var b string = "neki string iz maina"
 var c = 144
 
 func main() {
-	var c bool
-	fmt.Printf("%T\t%v\n", c, c)
-	/*for i := 60; i <= 170; i++ {
-		fmt.Printf("%b \t %d \t %x \t  %q\n", i, i, i, i)
-	}*/
-
-	Print()
+	mapa := map[int]string{
+		0 : "aleks",
+		1 : "jen",
+		2 : "antonina",
+	}
+	for k, v := range mapa {
+		fmt.Println(k, v)
+	}
 }
 
-func printC() int {
-	return c
-}
