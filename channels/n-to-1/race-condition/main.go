@@ -7,11 +7,10 @@ import (
 
 func main() {
 	c := make(chan int)
-
 	var wg sync.WaitGroup
 
 	go func() {
-		wg.Add(1)
+		wg.Add(1) 	// should not add to shared variable from different funcs
 		for i := 0; i < 10; i++ {
 			c <- i
 		}
