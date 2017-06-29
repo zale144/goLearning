@@ -1,0 +1,18 @@
+package main
+
+import (
+	"net"
+	"io/ioutil"
+	"fmt"
+)
+
+func main() {
+	conn, err := net.Dial("tcp", "localhost:9000")
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	bs, _ := ioutil.ReadAll(conn)
+	fmt.Println(string(bs))
+}
