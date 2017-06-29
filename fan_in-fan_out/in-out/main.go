@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func main()  {
+func main() {
 	in := gen(2, 3)
 
 	// FAN OUT
@@ -16,7 +16,7 @@ func main()  {
 	// FAN IN
 	// Consume the merged output from multiple channels
 	for n := range merge(c1, c2) {
-		fmt.Println(n)   // 4 then 9, or 9 then 4
+		fmt.Println(n) // 4 then 9, or 9 then 4
 	}
 }
 
@@ -34,7 +34,7 @@ func gen(nums ...int) <-chan int {
 func sq(in <-chan int) <-chan int {
 	out := make(chan int)
 	go func() {
-		for n:= range in {
+		for n := range in {
 			out <- n * n
 		}
 		close(out)

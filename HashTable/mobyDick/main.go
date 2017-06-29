@@ -27,7 +27,7 @@ func main() {
 		buckets[n] = append(buckets[n], word)
 	}
 
-	for i, _ := range buckets {
+	for i := range buckets {
 		fmt.Println(len(buckets[i]))
 	}
 }
