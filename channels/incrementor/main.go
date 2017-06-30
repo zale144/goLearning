@@ -1,43 +1,33 @@
 package main
 
+import "fmt"
+
 func main()  {
-	c := incrementor()
-	for n := range c {
-		println(n)
-		if n >= 5 {
-			break
-		}
-	}
-
-	for n := range puller(c) {
-		println("sum =", n)
-	}
-
-	for n := range c {
-		println(n)
-	}
+	c1 := incrementor("Foo")
+	c2 := incrementor("Bar")
+	c3 := puller(c1)
+	c4 := puller(c2)
+	fmt.Println("Final Counter: ", <-c3+<-c4)
 }
 
-func incrementor() <-chan int {
+func incrementor(s string) chan int {
 	out := make(chan int)
 	go func() {
 		for i := 1; i < 10; i++ {
 			out <- i
+			fmt.Println(s, i)
 		}
 		close(out)
 	}()
 	return out
 }
 
-func puller(c <-chan int) <-chan int {
+func puller(c chan int) chan int {
 	out := make(chan int)
 	go func() {
 		var sum int
 		for n := range c {
 			sum += n
-			if n >= 8 {
-				break
-			}
 		}
 		out <- sum
 		close(out)
